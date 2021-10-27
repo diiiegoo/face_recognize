@@ -1,9 +1,7 @@
-from typing import Tuple
 import streamlit as st
 import requests
 import io
 from PIL import ImageFont, ImageDraw, Image
-import json
 
 
 st.title('顔認証アプリ')
