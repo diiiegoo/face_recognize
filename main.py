@@ -25,8 +25,7 @@ if uploaded_file is not None:
 
     params = {
         'returnFaceId': 'true',
-        
-    'returnFaceAttributes':'age,gender',
+        'returnFaceAttributes':'age,gender',
     }
 
     res = requests.post(face_api_url, params=params,
