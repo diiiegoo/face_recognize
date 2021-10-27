@@ -20,9 +20,9 @@ if uploaded_file is not None:
         img.save(output, format="JPEG")
         binary_img = output.getvalue()
     headers = {
-        'Content-Type':'application/octet-stream',
-        'Ocp-Apim-Subscription-Key': subscription_key}
-
+        'Content-Type': 'application/octet-stream',
+        'Ocp-Apim-Subscription-Key': subscription_key
+    }
     params = {
         'returnFaceId': 'true',
         'returnFaceAttributes':'age,gender',
