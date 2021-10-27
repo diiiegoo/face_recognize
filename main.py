@@ -33,7 +33,7 @@ if uploaded_file is not None:
         rect = result['faceRectangle']
         age_data = result['faceAttributes']
         draw = ImageDraw.Draw(img)
-        font = ImageFont.truetype("arial.ttf", 32)
-        draw.text((rect['left'],rect['top']-30), str(age_data['gender'])+str(int(age_data['age'])), fill='green', font=font)
+        font = ImageFont.truetype("arial.ttf", 100)
+        draw.text((rect['left'],rect['top']-100), str(age_data['gender'])+str(int(age_data['age'])), fill='green', font=font)
         draw.rectangle([(rect['left'],rect['top']),(rect['left']+rect['width'],rect['top']+rect['height'])],fill =None,width = 5,outline ='green')
     st.image(img, caption='Uploaded Image.',use_column_width=True)
