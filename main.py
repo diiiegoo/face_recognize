@@ -10,7 +10,7 @@ subscription_key = '6e56b74341f34d4fae60e06b66b85061'
 assert subscription_key
 face_api_url = 'https://1026streamlit.cognitiveservices.azure.com/face/v1.0/detect'
 
-uploaded_file = st.file_uploader("choose an image...", type='jpg')
+uploaded_file = st.file_uploader("choose an image...", type=["png", "jpg", "jpeg"])
 
 if uploaded_file is not None:
     img = Image.open(uploaded_file)
