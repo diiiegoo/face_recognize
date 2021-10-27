@@ -2,8 +2,7 @@ from typing import Tuple
 import streamlit as st
 import requests
 import io
-from PIL import Image
-from PIL import ImageDraw
+from PIL import ImageFont, ImageDraw, Image
 import json
 
 
@@ -26,8 +25,8 @@ if uploaded_file is not None:
 
     params = {
         'returnFaceId': 'true',
-        'returnFaceAttributes':'accessories,age,blur,emotion,exposure,facialhair,gender,glasses,hair,headpose,makeup,noise,occlusion,smile'
-    
+        
+    'returnFaceAttributes':'age,gender',
     }
 
     res = requests.post(face_api_url, params=params,
@@ -35,6 +34,9 @@ if uploaded_file is not None:
     results = res.json()
     for result in results:
         rect = result['faceRectangle']
+        age_data = result['faceAttributes']
         draw = ImageDraw.Draw(img)
+        font = ImageFont.truetype("arial.ttf", 32)
+        draw.text((rect['left'],rect['top']-30), str(age_data['gender'])+str(int(age_data['age'])), fill='green', font=font)
         draw.rectangle([(rect['left'],rect['top']),(rect['left']+rect['width'],rect['top']+rect['height'])],fill =None,width = 5,outline ='green')
     st.image(img, caption='Uploaded Image.',use_column_width=True)
